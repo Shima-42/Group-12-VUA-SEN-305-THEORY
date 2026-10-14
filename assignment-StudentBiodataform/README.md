@@ -1,4 +1,19 @@
-Assignment: Student Biodata Form📋 OverviewThis folder contains the source code and documentation for the Student Biodata Form assignment.👥 Task Allocation & ResponsibilitiesTeam MemberRoleResponsibilityShimaProject LeadOverall project direction, HTML structure & testingCeejayDocumentationRequirements & documentationHelenaStylingCSS styling & layoutChristopherScriptingJavaScript validation & interactive functionality🛠️ Folder Structureassignment-StudentBiodataform/
+Assignment: Student Biodata Form📋 Overview
+
+
+This folder contains the source code and documentation for the Student Biodata Form assignment.
+
+👥 Task Allocation & Responsibilities of Team Member, Role and Responsibility
+
+Shima : Project LeadOverall project direction, HTML structure & testing.
+
+Ceejay: DocumentationRequirements & documentation.
+
+Helena: StylingCSS styling & layout.
+
+Christopher:ScriptingJavaScript validation & interactive functionality
+
+🛠️ Folder Structureassignment-StudentBiodataform/
 │
 ├── README.md             # Assignment guidelines and details
 ├── index.html            # Primary HTML biodata form layout
