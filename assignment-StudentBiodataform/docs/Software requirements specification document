@@ -1,0 +1,94 @@
+STUDENT BIODATA FORM
+Software Requirements Specification Document 
+
+1. Introduction
+The Student Biodata Form is a system designed to collect and organize students' personal and academic information. It provides a structured way for students to enter their biodata and submit it for record-keeping.
+
+2. Purpose of the System
+The purpose of the system is to make the collection of student information easier, faster, and more organized. It aims to reduce errors associated with manual data collection and improve the management of student records.
+
+3. Objectives of the system 
+The objectives of the system are to:
+i. Collect students' personal and academic information.
+ii. Provide a simple and user-friendly form.
+iii. Ensure that required information is provided.
+iv. Validate information entered by students.
+v. Make the collection of student biodata more efficient.
+vi. Support accurate and organized record-keeping.
+
+4. Scope of the System
+The system will allow students to enter their biodata through an electronic form. It will include fields for personal and academic information, basic input validation, and a submission process.
+
+5. Stakeholders and Users
+- Students: Provide their personal and academic information.
+- Administrators: May review or manage submitted student records if administrative functionality is included.
+- Development team: Designs, develops, tests, and maintains the system.
+
+6. Data Requirements
+The form may collect the following information:
+Personal information
+- Full name
+- Date of birth
+- Gender
+- Phone number
+- Email address
+- Residential address
+Academic information
+- Matriculation or registration number
+- Faculty
+- Department
+- Level
+- Programme of study
+
+7. Functional Requirements
+Functional requirements describe what the system should do.
+- The system shall display a student biodata form.
+- The system shall allow students to enter their personal information.
+- The system shall allow students to enter their academic information.
+- The system shall identify required fields that have not been completed.
+- The system shall validate information entered into relevant fields.
+- The system shall display an appropriate message when invalid information is entered.
+- The system shall allow students to submit completed forms.
+- The system shall provide feedback after a submission attempt.
+- The system shall save submitted biodata for authorized access.
+
+8. Non-Functional Requirements
+Non-functional requirements describe the qualities the system should have.
+- Usability: The form should be easy to understand and use.
+- Performance: The system should respond to user actions within a reasonable time.
+- Security: Student information should be protected against unauthorized access.
+- Reliability: The system should process valid submissions correctly.
+- Maintainability: The system should be organized so that developers can update it when necessary.
+- Compatibility: The system should work with the platforms and browsers selected for the project.
+
+9. Input Validation Requirements
+The system should:
+i. Ensure required fields are not empty.
+ii. Check that email addresses follow an acceptable format.
+iii. Check that phone numbers contain acceptable characters and lengths.
+iv. Ensure that dates are valid.
+v. Check that the matriculation number follows the institution's required format, if one is specified.
+vi. Display clear error messages to help users correct mistakes.
+
+10. Assumptions and Constraints
+Assumptions
+- Students will provide accurate information.
+- The institution will determine which biodata fields are required.
+- The development team will agree on the technologies used to build the system.
+
+Constraints
+- The system must be completed within the project's deadline.
+- Its features will depend on the time, tools, and resources available.
+- Database storage and administrative functions will depend on the agreed project scope.
+
+11. Acceptance Criteria
+The system will be considered to meet its basic requirements when:
+I. The biodata form displays all agreed fields.
+ii. Users can enter personal and academic information.
+iii. Required fields are checked before submission.
+iv. Invalid inputs produce appropriate feedback.
+v. Valid information can be submitted successfully.
+vi. The system provides clear feedback after submission.
+
+12. Conclusion
+The Student Biodata Form is intended to simplify the collection of students' personal and academic information. By providing a structured form and appropriate validation, the system can improve the accuracy, organization, and efficiency of student data collection.
