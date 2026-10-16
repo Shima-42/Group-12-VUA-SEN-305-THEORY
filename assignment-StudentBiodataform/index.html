@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Defines the character encoding to support text and symbols -->
+    <meta charset="UTF-8">
+
+    <!-- Makes the webpage adjust to different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- The title displayed on the browser tab -->
+    <title>Student Biodata Form</title>
+</head>
+
+<body>
+
+    <!-- HEADER: Introduces the purpose of the webpage -->
+    <header>
+        <h1>Student Biodata Form</h1>
+        <p>Please provide your personal and academic information.</p>
+    </header>
+
+    <!-- MAIN: Contains the primary content of the webpage -->
+    <main>
+
+        <!-- FORM: Groups the fields that collect student information -->
+        <form id="biodataForm">
+
+            <!-- SECTION 1: Collects the student's personal details -->
+            <fieldset>
+                <!-- The heading for this group of fields -->
+                <legend>Personal Information</legend>
+
+                <!-- Collects the student's full name -->
+                <label for="fullName">Full Name</label>
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    autocomplete="name"
+                    required
+                >
+
+                <!-- Collects the student's date of birth -->
+                <label for="dob">Date of Birth</label>
+                <input
+                    type="date"
+                    id="dob"
+                    name="dateOfBirth"
+                    required
+                >
+
+                <!-- Allows the student to select a gender option -->
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+
+                    <!-- Empty value prompts the student to make a selection -->
+                    <option value="">Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="prefer-not-to-say">
+                        Prefer not to say
+                    </option>
+
+                </select>
+
+                <!-- Collects the student's phone number -->
+                <label for="phone">Phone Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    autocomplete="tel"
+                    required
+                >
+
+                <!-- Collects an email address and checks its basic format -->
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                >
+
+                <!-- Provides a larger area for the residential address -->
+                <label for="address">Residential Address</label>
+                <textarea
+                    id="address"
+                    name="address"
+                    rows="3"
+                    autocomplete="street-address"
+                    required
+                ></textarea>
+
+            </fieldset>
+
+            <!-- SECTION 2: Collects the student's academic details -->
+            <fieldset>
+                <legend>Academic Information</legend>
+
+                <!-- Identifies the student using a matriculation or registration number -->
+                <label for="matricNumber">
+                    Matriculation/Registration Number
+                </label>
+                <input
+                    type="text"
+                    id="matricNumber"
+                    name="matricNumber"
+                    required
+                >
+
+                <!-- Collects the student's faculty -->
+                <label for="faculty">Faculty</label>
+                <input
+                    type="text"
+                    id="faculty"
+                    name="faculty"
+                    required
+                >
+
+                <!-- Collects the student's department -->
+                <label for="department">Department</label>
+                <input
+                    type="text"
+                    id="department"
+                    name="department"
+                    required
+                >
+
+                <!-- Provides a list of available academic levels -->
+                <label for="level">Level</label>
+                <select id="level" name="level" required>
+
+                    <!-- Requires the student to choose a level -->
+                    <option value="">Select level</option>
+                    <option value="100">100 Level</option>
+                    <option value="200">200 Level</option>
+                    <option value="300">300 Level</option>
+                    <option value="400">400 Level</option>
+                    <option value="500">500 Level</option>
+                    <option value="600">600 Level</option>
+
+                </select>
+
+                <!-- Collects the name of the student's programme of study -->
+                <label for="programme">Programme of Study</label>
+                <input
+                    type="text"
+                    id="programme"
+                    name="programme"
+                    required
+                >
+
+            </fieldset>
+
+            <!-- FEEDBACK AREA:
+                 JavaScript can display success or error messages here -->
+            <div
+                id="formMessage"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+            <!-- Submits the form when the required browser checks pass -->
+            <button type="submit">Submit Biodata</button>
+
+            <!-- Resets the form fields to their initial values -->
+            <button type="reset">Clear Form</button>
+
+        </form>
+
+    </main>
+
+</body>
+</html>
