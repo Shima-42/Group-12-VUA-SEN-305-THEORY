@@ -1,0 +1,125 @@
+:root{
+  --pink: dark #d63384;
+  --main-pink: #ff69b4;
+  --pink-light: #ffe4f0;
+  --pink-soft: #fff0f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+ background-color: var(--pink-light)
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+ color: var(--pink-dark)
+}
+
+header p {
+  color: #555;
+  margin: 0;
+}
+
+main {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+form {
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(214, 51, 132, 0.25);
+}
+
+fieldset {
+ border: 2px dashed var(--pink-main);
+ background: var(--pink-soft);
+}
+
+legend {
+ color: var(--pink-dark)
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--pink-main);
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.3);
+}
+
+textarea {
+  resize: vertical;
+}
+
+#formMessage {
+  margin: 8px 0 16px;
+  font-weight: bold;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+button[type="submit"] {
+  background-color: #e91e8c;
+  color: #ffffff;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--pink-dark);
+}
+
+button[type="reset"] {
+  background-color: #e4e7eb;
+  color: #2c3e50;
+}
+
+button[type="reset"]:hover {
+  background-color: #d0d5db;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  form {
+    padding: 16px;
+  }
+
+  button {
+    width: 100%;
+    margin: 8px 0 0;
+  }
+}
