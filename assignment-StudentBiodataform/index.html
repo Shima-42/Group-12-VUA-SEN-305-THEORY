@@ -16,6 +16,25 @@
 
 <body>
 
+    <!-- 1. LOGIN POPUP MODAL -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Student Login</h2>
+            <form id="loginForm">
+                <label for="loginUsername">Username / Matric Number</label>
+                <input type="text" id="loginUsername" name="username" required>
+
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" name="password" required>
+
+                <div id="loginMessage" style="color: red; margin: 10px 0;"></div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. BIODATA FORM (Hidden until logged in) -->
+    <div id="biodataContainer" style="display: none;">
     <!-- HEADER: Introduces the purpose of the webpage -->
     <header>
         <h1>Student Biodata Form</h1>
@@ -171,10 +190,10 @@
 
             <!-- Resets the form fields to their initial values -->
             <button type="reset">Clear Form</button>
-
         </form>
 
     </main>
+    </div>
       <script src = "script.js" defer></script>
 </body>
 </html>
