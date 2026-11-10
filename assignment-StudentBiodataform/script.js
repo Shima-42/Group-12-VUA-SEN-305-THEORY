@@ -5,8 +5,8 @@ const loginModal = document.getElementById("loginModal");
 const loginMessage = document.getElementById("loginMessage");
 const loginUsernameInput = document.getElementById("loginUsername");
 const loginPasswordInput = document.getElementById("loginPassword");
-const biodataContainer = document.getElementById("biodataContainer");
 
+const biodataContainer = document.getElementById("biodataContainer");
 const form = document.getElementById("biodataForm");
 const formMessage = document.getElementById("formMessage");
 const phoneInput = document.getElementById("phone");
@@ -29,6 +29,7 @@ loginForm.addEventListener("submit", async (event) => {
                 password: loginPasswordInput.value
             })
         });
+
         const result = await response.json().catch(() => ({}));
 
         if (!response.ok) {
@@ -91,11 +92,27 @@ function validateForm() {
 async function saveSubmission(submission) {
     let response;
 
+    // Direct mapping from your existing form names to MySQL database column names
+    const mappedSubmission = {
+        full_name: submission.fullName || submission.full_name,
+        date_of_birth: submission.dateOfBirth || submission.date_of_birth,
+        gender: submission.gender,
+        phone: submission.phone,
+        email: submission.email,
+        address: submission.address,
+        matric_number: submission.matricNumber || submission.matric_number,
+        faculty: submission.faculty,
+        department: submission.department,
+        level: submission.level,
+        programme: submission.programme,
+        submittedAt: submission.submittedAt
+    };
+
     try {
         response = await fetch(`${API_URL}/api/biodata`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(submission)
+            body: JSON.stringify(mappedSubmission)
         });
     } catch {
         throw new Error("Cannot reach the server. Is it running? Your biodata was not saved.");
@@ -127,6 +144,7 @@ form.addEventListener("change", (event) => {
 // Validate before saving and only report success after the server confirms the record.
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
     const firstInvalidInput = validateForm();
 
     if (firstInvalidInput) {
@@ -136,11 +154,11 @@ form.addEventListener("submit", async (event) => {
         return;
     }
 
-    const submission = Object.fromEntries(new FormData(form).entries());
-    submission.submittedAt = new Date().toISOString();
+    const rawData = Object.fromEntries(new FormData(form).entries());
+    rawData.submittedAt = new Date().toISOString();
 
     try {
-        await saveSubmission(submission);
+        await saveSubmission(rawData);
         formMessage.textContent = "Your biodata was saved to the database.";
     } catch (error) {
         formMessage.textContent = error.message;
