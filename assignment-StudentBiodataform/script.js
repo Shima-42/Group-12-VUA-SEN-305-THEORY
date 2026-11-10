@@ -1,11 +1,47 @@
+const API_URL = "http://localhost:5000";
+
+const loginForm = document.getElementById("loginForm");
+const loginModal = document.getElementById("loginModal");
+const loginMessage = document.getElementById("loginMessage");
+const loginUsernameInput = document.getElementById("loginUsername");
+const loginPasswordInput = document.getElementById("loginPassword");
+const biodataContainer = document.getElementById("biodataContainer");
+
 const form = document.getElementById("biodataForm");
 const formMessage = document.getElementById("formMessage");
 const phoneInput = document.getElementById("phone");
 const dateOfBirthInput = document.getElementById("dob");
-const storageKey = "studentBiodataSubmissions";
 
 // Run custom checks ourselves so we can show feedback in the form.
 form.noValidate = true;
+
+// Send the login details to the server and reveal the biodata form on success.
+loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    loginMessage.textContent = "";
+
+    try {
+        const response = await fetch(`${API_URL}/api/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                username: loginUsernameInput.value.trim(),
+                password: loginPasswordInput.value
+            })
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+            loginMessage.textContent = result.message || "Login failed. Please try again.";
+            return;
+        }
+
+        loginModal.style.display = "none";
+        biodataContainer.style.display = "block";
+    } catch {
+        loginMessage.textContent = "Cannot reach the server. Is it running?";
+    }
+});
 
 // Add a clear browser validation message for fields with custom rules.
 function setValidationMessage(input) {
@@ -51,35 +87,24 @@ function validateForm() {
     return firstInvalidInput;
 }
 
-// Append a validated submission to this browser's local storage.
-function saveSubmission(submission) {
-    let savedSubmissions;
+// Send a validated submission to the server, which saves it to MySQL.
+async function saveSubmission(submission) {
+    let response;
 
     try {
-        savedSubmissions = window.localStorage.getItem(storageKey);
+        response = await fetch(`${API_URL}/api/biodata`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(submission)
+        });
     } catch {
-        throw new Error("Browser storage is unavailable. Your biodata was not saved.");
+        throw new Error("Cannot reach the server. Is it running? Your biodata was not saved.");
     }
 
-    let submissions = [];
-    if (savedSubmissions) {
-        try {
-            submissions = JSON.parse(savedSubmissions);
-        } catch {
-            throw new Error("Previously saved data could not be read. Your biodata was not saved.");
-        }
+    const result = await response.json().catch(() => ({}));
 
-        if (!Array.isArray(submissions)) {
-            throw new Error("Previously saved data is invalid. Your biodata was not saved.");
-        }
-    }
-
-    submissions.push(submission);
-
-    try {
-        window.localStorage.setItem(storageKey, JSON.stringify(submissions));
-    } catch {
-        throw new Error("Could not save biodata in this browser. Check available storage and try again.");
+    if (!response.ok) {
+        throw new Error(result.message || "The server could not save your biodata.");
     }
 }
 
@@ -99,8 +124,8 @@ form.addEventListener("change", (event) => {
     }
 });
 
-// Validate before saving and only report success after local storage accepts the record.
-form.addEventListener("submit", (event) => {
+// Validate before saving and only report success after the server confirms the record.
+form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const firstInvalidInput = validateForm();
 
@@ -115,9 +140,8 @@ form.addEventListener("submit", (event) => {
     submission.submittedAt = new Date().toISOString();
 
     try {
-        saveSubmission(submission);
-        formMessage.textContent =
-            "Your biodata was saved in this browser. It is only available on this device and browser.";
+        await saveSubmission(submission);
+        formMessage.textContent = "Your biodata was saved to the database.";
     } catch (error) {
         formMessage.textContent = error.message;
     }
